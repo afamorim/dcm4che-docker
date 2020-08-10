@@ -2,6 +2,7 @@ version: "3"
 services:
   ldap:
     image: dcm4che/slapd-dcm4chee:2.4.50-22.3
+    container_name: ldap
     logging:
       driver: json-file
       options:
@@ -14,6 +15,7 @@ services:
       - ./data/slapd.d:/etc/openldap/slapd.d
   db:
     image: dcm4che/postgres-dcm4chee:12.2-22
+    container_name: db
     logging:
       driver: json-file
       options:
@@ -27,6 +29,7 @@ services:
       - ./data/db:/var/lib/postgresql/data
   arc:
     image: dcm4che/dcm4chee-arc-psql:5.22.3
+    container_name: arc
     logging:
       driver: json-file
       options:
@@ -45,6 +48,9 @@ services:
       WILDFLY_CHOWN: /opt/wildfly/standalone /storage
       WILDFLY_WAIT_FOR: ldap:389 db:5432
     depends_on:
+      - ldap
+      - db
+    links:
       - ldap
       - db
     volumes:

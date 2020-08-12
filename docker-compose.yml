@@ -13,6 +13,31 @@ services:
     volumes:
       - ./data/ldap:/var/lib/openldap/openldap-data
       - ./data/slapd.d:/etc/openldap/slapd.d
+  keycloak:
+    image: dcm4che/keycloak:10.0.2
+    container_name: keycloak
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+    ports:
+      - "8880:8880"
+      - "8843:8843"
+      - "8990:8990"
+      - "8993:8993"
+    env_file: docker-compose.env
+    environment:
+      HTTP_PORT: 8880
+      HTTPS_PORT: 8843
+      MANAGEMENT_HTTP_PORT: 8990
+      MANAGEMENT_HTTPS_PORT: 8993
+      KEYCLOAK_WAIT_FOR: ldap:389
+    depends_on:
+      - ldap
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - ./data/keycloak:/opt/keycloak/standalone
   db:
     image: dcm4che/postgres-dcm4chee:12.2-22
     container_name: db
@@ -28,7 +53,7 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - ./data/db:/var/lib/postgresql/data
   arc:
-    image: dcm4che/dcm4chee-arc-psql:5.22.3
+    build: ./dcm4chee-arc-psql-5.22.3-secure
     container_name: arc
     logging:
       driver: json-file
@@ -49,9 +74,7 @@ services:
       WILDFLY_WAIT_FOR: ldap:389 db:5432
     depends_on:
       - ldap
-      - db
-    links:
-      - ldap
+      - keycloak
       - db
     volumes:
       - /etc/localtime:/etc/localtime:ro

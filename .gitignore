@@ -1,6 +1,7 @@
-dcm4che/data/db
-**/log
-**/tmp
+dcm4che/data/db/*
+*.log
+**/log/*.log
+**/tmp/*
 *.tmp
 serverlock.*
-**/standalone_xml_history
+**/standalone_xml_history/*

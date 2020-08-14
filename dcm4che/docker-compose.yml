@@ -14,9 +14,9 @@ services:
     volumes:
       - ./data/ldap:/var/lib/openldap/openldap-data
       - ./data/slapd.d:/etc/openldap/slapd.d
-  keycloak:
+  dcm4che:
     image: dcm4che/keycloak:10.0.2
-    container_name: keycloak
+    container_name: dcm4che
     logging:
       driver: json-file
       options:
@@ -71,7 +71,7 @@ services:
       WILDFLY_WAIT_FOR: ldap:389 db:5432
     depends_on:
       - ldap
-      - keycloak
+      - dcm4che
       - db
     volumes:
       - /etc/localtime:/etc/localtime:ro

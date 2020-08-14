@@ -1,7 +1,7 @@
 dcm4che/data/db/*
-*.log
-**/log/*.log
+**/log/*
 **/tmp/*
 *.tmp
 serverlock.*
 **/standalone_xml_history/*
+!**/.gitkeep

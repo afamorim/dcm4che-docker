@@ -1,5 +1,4 @@
-*/data/db
-serverlock*
-*.tmp
-*.lock
-*.log
+dcm4chee/data/db
+**/log
+**/tmp
+dcm4chee/data/wildfly/configuration

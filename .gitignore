@@ -4,4 +4,6 @@ dcm4che/data/db/*
 *.tmp
 serverlock.*
 **/standalone_xml_history/*
+keycloak.trace.db
+**/Audit_Logger/*
 !**/.gitkeep

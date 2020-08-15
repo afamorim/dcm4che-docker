@@ -1,5 +1,11 @@
 # dcm4chee-docker
 
+Set all permissions in ./data
+
+```bash
+sudo chmod -R 777 ./data
+```
+
 Create and start the 4 containers by invoking:
 
 ```bash

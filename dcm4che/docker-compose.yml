@@ -12,8 +12,8 @@ services:
       - "636:636"
     env_file: docker-compose.env
     volumes:
-      - ./data/ldap:/var/lib/openldap/openldap-data
-      - ./data/slapd.d:/etc/openldap/slapd.d
+      - ./data/ldap/data:/var/lib/openldap/openldap-data
+      - ./data/ldap/slapd.d:/etc/openldap/slapd.d
   dcm4che:
     image: dcm4che/keycloak:10.0.2
     container_name: dcm4che

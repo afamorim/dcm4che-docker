@@ -2,6 +2,7 @@ dcm4che/data/db/*
 **/log/*
 **/tmp/*
 *.tmp
+**/data/storage/*
 serverlock.*
 **/standalone_xml_history/*
 keycloak.trace.db

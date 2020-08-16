@@ -54,7 +54,7 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - ./data/db:/var/lib/postgresql/data
   arc:
-    build: ./arc
+    image: dcm4che/dcm4chee-arc-psql:5.22.2-secure
     container_name: arc
     ports:
       - "8080:8080"

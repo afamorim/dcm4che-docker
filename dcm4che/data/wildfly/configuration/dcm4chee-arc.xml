@@ -48,7 +48,7 @@
         <property name="com.sun.jndi.ldap.object.disableEndpointIdentification" value="${env.LDAP_DISABLE_HOSTNAME_VERIFICATION:true}"/>
         <property name="dcm4chee-arc.DeviceName" value="${env.ARCHIVE_DEVICE_NAME:dcm4chee-arc}"/>
         <property name="org.dcm4che3.util.ReverseDNS" value="${env.REVERSE_DNS:true}"/>
-        <property name="auth-server-url" value="${env.AUTH_SERVER_URL:http://keycloak:8080/auth}"/>
+        <property name="auth-server-url" value="${env.AUTH_SERVER_URL:http://dcm4che:8080/auth}"/>
         <property name="realm-name" value="${env.REALM_NAME:dcm4che}"/>
         <property name="ssl-required" value="${env.SSL_REQUIRED:external}"/>
         <property name="ui-client-id" value="${env.UI_CLIENT_ID:dcm4chee-arc-ui}"/>
@@ -704,7 +704,7 @@
         <subsystem xmlns="urn:jboss:domain:keycloak:1.1">
             <secure-deployment name="dcm4chee-arc-ui2-5.22.2-secure.war">
                 <realm>${env.REALM_NAME:dcm4che}</realm>
-                <auth-server-url>${env.AUTH_SERVER_URL:http://keycloak:8080/auth}</auth-server-url>
+                <auth-server-url>${env.AUTH_SERVER_URL:http://dcm4che:8080/auth}</auth-server-url>
                 <public-client>true</public-client>
                 <ssl-required>${env.SSL_REQUIRED:external}</ssl-required>
                 <resource>${env.UI_CLIENT_ID:dcm4chee-arc-ui}</resource>
@@ -714,7 +714,7 @@
             </secure-deployment>
             <secure-deployment name="dcm4chee-arc-war-5.22.2-secure.war">
                 <realm>${env.REALM_NAME:dcm4che}</realm>
-                <auth-server-url>${env.AUTH_SERVER_URL:http://keycloak:8080/auth}</auth-server-url>
+                <auth-server-url>${env.AUTH_SERVER_URL:http://dcm4che:8080/auth}</auth-server-url>
                 <bearer-only>true</bearer-only>
                 <ssl-required>${env.SSL_REQUIRED:external}</ssl-required>
                 <resource>${env.RS_CLIENT_ID:dcm4chee-arc-rs}</resource>

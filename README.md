@@ -1,31 +1,45 @@
-# dcm4chee-docker
+# Manual de instalação do dcm4che 5
 
-Set all permissions in ./data
+Este manual ajuda qualquer usuário na criação de ambiente do dcm4che 5.
+
+## Pré-requisitos
+
+É necessário ter instalado os seguintes softwares:
+
+- Docker (https://docs.docker.com/engine/install/)
+- Docker Compose (https://docs.docker.com/compose/install/)
+
+## Instalação
+
+1. Adicione __dcm4che__ no arquivo "hosts"(`C:\Windows\System32\Drivers\etc\hosts`):
 
 ```bash
-sudo chmod -R 777 ./data
+127.0.0.1	dcm4che
 ```
 
-Create and start the 4 containers by invoking:
+2. Altere o host __dcm4che__ das linhas 2 e 3 do arquivo `dcm4che/docker-compose.env` para o nome do host (somente para sistemas que serão acessados externamente).
+
+3. Suba o ambiente docker:
 
 ```bash
 docker-compose -p dcm4chee up -d
 ```
 
-Stop all 4 containers:
+4. Crie um serviço para iniciar o computador com o ambiente iniciado.
 
-```bash
-docker-compose -p dcm4chee stop
-```
+https://www.it-swarm.dev/pt/docker/como-executar-o-docker-compose-d-na-inicializacao-do-sistema/832512690/
 
-Start all 4 containers:
 
-```bash
-docker-compose -p dcm4chee start
-```
+## Desinstalação
 
-Destroy all 4 containers:
+1. Remova todos os ambientes do projeto
 
 ```bash
 docker-compose -p dcm4chee down
+```
+
+2. Apague restícios do docker que não estão sendo utilizados:
+
+```bash
+docker system prune --all
 ```

@@ -1,6 +1,7 @@
 version: "3"
 services:
   ldap:
+    restart: always
     image: dcm4che/slapd-dcm4chee:2.4.50-22.3
     container_name: ldap
     logging:
@@ -15,6 +16,7 @@ services:
       - ./data/ldap/data:/var/lib/openldap/openldap-data
       - ./data/ldap/slapd.d:/etc/openldap/slapd.d
   dcm4che:
+    restart: always
     build: ./keycloak
     container_name: dcm4che
     logging:
@@ -40,6 +42,7 @@ services:
       - /etc/timezone:/etc/timezone:ro
       # - ./data/keycloak:/opt/keycloak/standalone
   db:
+    restart: always
     image: dcm4che/postgres-dcm4chee:12.2-22
     container_name: db
     logging:
@@ -54,6 +57,7 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - ./data/db:/var/lib/postgresql/data
   arc:
+    restart: always
     build: ./arc
     container_name: arc
     ports:

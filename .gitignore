@@ -1,11 +1,1 @@
-dcm4che/data/db/*
-dcm4che/data/ldap/*
-dcm4che/data/storage/*
-**/log/*
-**/tmp/*
-*.tmp
-serverlock.*
-**/standalone_xml_history/*
-keycloak.trace.db
-**/Audit_Logger/*
-!**/.gitkeep
+dcm4che/data

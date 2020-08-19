@@ -15,7 +15,7 @@ services:
       - ./data/ldap/data:/var/lib/openldap/openldap-data
       - ./data/ldap/slapd.d:/etc/openldap/slapd.d
   dcm4che:
-    image: dcm4che/keycloak:10.0.2
+    build: ./keycloak
     container_name: dcm4che
     logging:
       driver: json-file
@@ -38,7 +38,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
-      - ./data/keycloak:/opt/keycloak/standalone
+      # - ./data/keycloak:/opt/keycloak/standalone
   db:
     image: dcm4che/postgres-dcm4chee:12.2-22
     container_name: db
@@ -54,7 +54,7 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - ./data/db:/var/lib/postgresql/data
   arc:
-    image: dcm4che/dcm4chee-arc-psql:5.22.2-secure
+    build: ./arc
     container_name: arc
     ports:
       - "8080:8080"
@@ -76,5 +76,5 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
-      - ./data/wildfly:/opt/wildfly/standalone
+      # - ./data/wildfly:/opt/wildfly/standalone
       - ./data/storage:/storage

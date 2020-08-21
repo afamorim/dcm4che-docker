@@ -22,7 +22,7 @@ Este manual ajuda qualquer usuário na criação de ambiente do dcm4che 5.
 3. Suba o ambiente docker:
 
 ```bash
-docker-compose -p dcm4chee up -d
+docker-compose -p dcm4chee up -d --build
 ```
 
 4. Crie um serviço para iniciar o computador com o ambiente iniciado.

@@ -40,7 +40,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
-      # - ./data/keycloak:/opt/keycloak/standalone
+      - ./data/keycloak:/opt/keycloak/standalone
   db:
     restart: always
     image: dcm4che/postgres-dcm4chee:12.2-22
@@ -80,5 +80,5 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
-      # - ./data/wildfly:/opt/wildfly/standalone
+      - ./data/wildfly:/opt/wildfly/standalone
       - ./data/storage:/storage

@@ -17,9 +17,9 @@ Este manual ajuda qualquer usuário na criação de ambiente do dcm4che 5.
 127.0.0.1	dcm4che
 ```
 
-2. Altere o host __dcm4che__ das linhas 2 e 3 do arquivo `dcm4che/docker-compose.env` para o nome do host (somente para sistemas que serão acessados externamente).
+2. Altere o host __dcm4che__ das linhas 2 e 3 do arquivo `dcm4chee/docker-compose.env` para o nome do host (somente para sistemas que serão acessados externamente).
 
-3. Suba o ambiente docker:
+3. Execute o comando docker dentro da pasta `dcm4chee`:
 
 ```bash
 docker-compose -p dcm4chee up -d --build

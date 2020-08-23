@@ -38,8 +38,8 @@ services:
     depends_on:
       - ldap
     volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
+      - ./localtime:/etc/localtime:ro
+      - ./timezone:/etc/timezone:ro
       - ./data/keycloak:/opt/keycloak/standalone
   db:
     restart: always
@@ -53,8 +53,8 @@ services:
       - "5432:5432"
     env_file: docker-compose.env
     volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
+      - ./localtime:/etc/localtime:ro
+      - ./timezone:/etc/timezone:ro
       - ./data/db:/var/lib/postgresql/data
   arc:
     restart: always
@@ -78,7 +78,7 @@ services:
       - dcm4che
       - db
     volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
+      - ./localtime:/etc/localtime:ro
+      - ./timezone:/etc/timezone:ro
       - ./data/wildfly:/opt/wildfly/standalone
       - ./data/storage:/storage

@@ -25,7 +25,12 @@ Este manual ajuda qualquer usuário na criação de ambiente do dcm4che 5.
 docker-compose -p dcm4chee up -d --build
 ```
 
-4. Crie um serviço para iniciar o computador com o ambiente iniciado.
+4. Libere acesso à API RESTful:
+    4.1. Acesse a URL https://localhost:8843/auth/admin/dcm4che/console/#/realms/dcm4che/clients
+    4.2. Edite o Client ID `curl`
+    4.3. Acesse a aba `Service Account Rules` e adicione `urer` em `Assigned Rules`
+
+Crie um serviço para iniciar o computador com o ambiente iniciado.
 
 https://www.it-swarm.dev/pt/docker/como-executar-o-docker-compose-d-na-inicializacao-do-sistema/832512690/
 

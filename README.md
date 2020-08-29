@@ -26,9 +26,9 @@ docker-compose -p dcm4chee up -d --build
 ```
 
 4. Libere acesso à API RESTful:
-    4.1. Acesse a URL https://localhost:8843/auth/admin/dcm4che/console/#/realms/dcm4che/clients
-    4.2. Edite o Client ID `curl`
-    4.3. Acesse a aba `Service Account Rules` e adicione `urer` em `Assigned Rules`
+    1. Acesse a URL https://localhost:8843/auth/admin/dcm4che/console/#/realms/dcm4che/clients
+    2. Edite o Client ID `curl`
+    3. Acesse a aba `Service Account Rules` e adicione `urer` em `Assigned Rules`
 
 Crie um serviço para iniciar o computador com o ambiente iniciado.
 

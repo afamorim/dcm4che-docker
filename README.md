@@ -19,6 +19,8 @@ Este manual ajuda qualquer usuário na criação de ambiente do dcm4che 5.
 
 2. Altere o host __dcm4che__ das linhas 2 e 3 do arquivo `dcm4chee/docker-compose.env` para o nome do host (somente para sistemas que serão acessados externamente).
 
+> Caso deseje alterar o nome do PACS de DCM4CHEE para um nome personalizado, altere a linha 4 do arquivo `dcm4chee/docker-compose.env`  e 12 do arquivo `dcm4chee/arc/dicom-dcm4chee-arc.properties`
+
 3. Execute o comando docker dentro da pasta `dcm4chee`:
 
 ```bash
@@ -33,7 +35,6 @@ docker-compose -p dcm4chee up -d --build
 Crie um serviço para iniciar o computador com o ambiente iniciado.
 
 https://www.it-swarm.dev/pt/docker/como-executar-o-docker-compose-d-na-inicializacao-do-sistema/832512690/
-
 
 ## Desinstalação
 

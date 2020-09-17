@@ -17,9 +17,9 @@ Este manual ajuda qualquer usuário na criação de ambiente do dcm4che 5.
 127.0.0.1	dcm4che
 ```
 
-2. Altere o host __dcm4che__ das linhas 2 e 3 do arquivo `dcm4chee/docker-compose.env` para o nome do host (somente para sistemas que serão acessados externamente).
+2. Altere o host __dcm4che__ das linhas 2 e 3 do arquivo `dcm4chee/docker-compose.env` e __localhost__ da linha 12 do arquivo `dcm4chee/arc/configuration/dicom-dcm4chee-arc.properties` para o nome do host (somente para sistemas que serão acessados externamente).
 
-> Caso deseje alterar o nome do PACS de DCM4CHEE para um nome personalizado, altere a linha 4 do arquivo `dcm4chee/docker-compose.env`  e 12 do arquivo `dcm4chee/arc/dicom-dcm4chee-arc.properties`
+> Caso deseje alterar o nome do PACS de DCM4CHEE para um nome personalizado, altere a linha 4 do arquivo `dcm4chee/docker-compose.env`  e 11 do arquivo `dcm4chee/arc/configuration/dicom-dcm4chee-arc.properties`
 
 3. Execute o comando docker dentro da pasta `dcm4chee`:
 

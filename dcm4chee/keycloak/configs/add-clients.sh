@@ -5,20 +5,29 @@ cp $JBOSS_HOME/configs/templates/* $JBOSS_HOME/configs/
 sed -i -e "s;%HOST%;$ARCHIVE_HOST;g" "$JBOSS_HOME/configs/dcm4chee-arc-ui.json"
 sed -i -e "s;%HOST%;$ARCHIVE_HOST;g" "$JBOSS_HOME/configs/wildfly-console.json"
 
-credentials_log="$JBOSS_HOME/standalone/log/credentials.log"
+log_dir="$JBOSS_HOME/standalone/log"
 
-touch $credentials_log
+mkdir -p $log_dir
+log_credentials="$log_dir/credentials.log"
+touch $log_credentials
 
-$JBOSS_HOME/bin/kcadm.sh config credentials --server $AUTH_SERVER_URL --realm dcm4che --user admin --password admin --client admin-cli |& tee $credentials_log
+echo "Waiting for avaliable $ARCHIVE_HOST:8880 ..."
+while ! nc -w 1 -z $ARCHIVE_HOST 8880; do sleep 1; done
+echo "Done avaliable"
 
-echo "Waiting for credentials..."
-while [[ $(cat $credentials_log) == *"Failed"* ]]; do 
-    $JBOSS_HOME/bin/kcadm.sh config credentials --server $AUTH_SERVER_URL --realm dcm4che --user admin --password admin --client admin-cli |& tee $credentials_log
+credential_url="http://$ARCHIVE_HOST:8880/auth"
+
+echo "Waiting for credentials in $credential_url..."
+$JBOSS_HOME/bin/kcadm.sh config credentials --server $credential_url --realm dcm4che --user admin --password admin --client admin-cli |& tee $log_credentials
+
+while [[ $(cat $log_credentials) == *"Failed"* || $(cat $log_credentials) == *"No server specified"* ]]; do 
+    echo "Waiting for credentials in $credential_url..."
+    $JBOSS_HOME/bin/kcadm.sh config credentials --server $credential_url --realm dcm4che --user admin --password admin --client admin-cli |& tee $log_credentials
 done
 echo "Done credentials"
 
-$JBOSS_HOME/bin/kcadm.sh create clients --realm dcm4che -f $JBOSS_HOME/configs/dcm4chee-arc-ui.json |& tee -a $credentials_log
-$JBOSS_HOME/bin/kcadm.sh create clients --realm dcm4che -f $JBOSS_HOME/configs/wildfly-console.json |& tee -a $credentials_log
-$JBOSS_HOME/bin/kcadm.sh create clients --realm dcm4che -f $JBOSS_HOME/configs/curl.json |& tee -a $credentials_log
+$JBOSS_HOME/bin/kcadm.sh create clients --realm dcm4che -f $JBOSS_HOME/configs/dcm4chee-arc-ui.json |& tee -a $log_credentials
+$JBOSS_HOME/bin/kcadm.sh create clients --realm dcm4che -f $JBOSS_HOME/configs/wildfly-console.json |& tee -a $log_credentials
+$JBOSS_HOME/bin/kcadm.sh create clients --realm dcm4che -f $JBOSS_HOME/configs/curl.json |& tee -a $log_credentials
 
 echo "Finished clients creation"

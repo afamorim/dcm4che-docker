@@ -1,4 +1,4 @@
-FROM dcm4che/keycloak:10.0.2
+FROM dcm4che/keycloak:11.0.2
 
 COPY configs/ $JBOSS_HOME/configs/
 

@@ -1,7 +1,7 @@
 version: "3"
 services:
   ldap:
-    restart: always
+    restart: unless-stopped
     image: dcm4che/slapd-dcm4chee:2.4.50-22.3
     container_name: ldap
     logging:
@@ -16,7 +16,7 @@ services:
       - ./data/ldap/data:/var/lib/openldap/openldap-data
       - ./data/ldap/slapd.d:/etc/openldap/slapd.d
   keycloak:
-    restart: always
+    restart: unless-stopped
     build: ./keycloak
     container_name: keycloak
     logging:
@@ -42,7 +42,7 @@ services:
       - ./timezone:/etc/timezone:ro
       - ./data/keycloak:/opt/keycloak/standalone
   db:
-    restart: always
+    restart: unless-stopped
     image: dcm4che/postgres-dcm4chee:12.2-22
     container_name: db
     logging:
@@ -57,7 +57,7 @@ services:
       - ./timezone:/etc/timezone:ro
       - ./data/db:/var/lib/postgresql/data
   arc:
-    restart: always
+    restart: unless-stopped
     build: ./arc
     container_name: arc
     ports:
@@ -82,3 +82,20 @@ services:
       - ./timezone:/etc/timezone:ro
       - ./data/wildfly:/opt/wildfly/standalone
       - ./data/storage:/storage
+  rabbitmq:
+    restart: unless-stopped
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    depends_on:
+      - arc
+    volumes:
+      - ./localtime:/etc/localtime:ro
+      - ./timezone:/etc/timezone:ro
+      - ./data/rabbitmq:/var/lib/rabbitmq

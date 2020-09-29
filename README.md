@@ -11,13 +11,13 @@ Este manual ajuda qualquer usuário na criação de ambiente do dcm4che 5.
 
 ## Instalação
 
-1. Adicione __dcm4che__ no arquivo "hosts"(`C:\Windows\System32\Drivers\etc\hosts`):
+1. Adicione __keycloak__ no arquivo "hosts"(`C:\Windows\System32\Drivers\etc\hosts`):
 
 ```bash
-127.0.0.1	dcm4che
+127.0.0.1	keycloak
 ```
 
-2. Altere o host __dcm4che__ das linhas 2 e 3 do arquivo `dcm4chee/docker-compose.env` e __localhost__ da linha 12 do arquivo `dcm4chee/arc/configuration/dicom-dcm4chee-arc.properties` para o nome do host (somente para sistemas que serão acessados externamente).
+2. Altere o host __keycloak__ das linhas 2 e 3 do arquivo `dcm4chee/docker-compose.env` e __localhost__ da linha 12 do arquivo `dcm4chee/arc/configuration/dicom-dcm4chee-arc.properties` para o nome do host (somente para sistemas que serão acessados externamente).
 
 > Caso deseje alterar o nome do PACS de DCM4CHEE para um nome personalizado, altere a linha 4 do arquivo `dcm4chee/docker-compose.env`  e 11 do arquivo `dcm4chee/arc/configuration/dicom-dcm4chee-arc.properties`
 

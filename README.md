@@ -49,3 +49,28 @@ docker-compose -p dcm4chee down
 ```bash
 docker system prune --all
 ```
+
+---
+
+## Configurações Extras
+
+Esta etapa apresenta algumas opções de configuração
+
+### Definer o AE_TITLE do dcm4che na instalação
+
+Para definir o AE_TITLE do dcm4che, altere o valor __DCM4CHEE__ (linha 4) do arquivo `dcm4chee/docker-compose.env` para o nome do AE_TITLE desejado
+
+### Liberar acesso do Weasis
+
+Para liberar o acesso do Weasis, será necessário seguir o passo-a-passo detalhado no link abaixo:
+
+[https://github.com/dcm4che/dcm4chee-arc-light/wiki/User-Role-Access-to-Viewer](https://github.com/dcm4che/dcm4chee-arc-light/wiki/User-Role-Access-to-Viewer)
+
+---
+
+## Informações gerais
+
+O arquivo `dcm4chee/docker-compose.env` possui algumas informações importantes:
+
+- As variáveis POSTGRES_DB, POSTGRES_USER e POSTGRES_PASSWORD são respectivamente o nome do banco de dados, o usuário de acesso e a senha de acesso do banco do Postgresql do Dcm4chee.
+- Quando publicar o dcm4chee em um servidor, deve liberar as portas 8080, 8443, 8843, 8880, 8990, 8993, 9990, 9993, 11112, 2762, 2575 e 12575. Não é necessário liberar a porta de acesso ao banco de dados (5432) e nem do ldap (389, 636).

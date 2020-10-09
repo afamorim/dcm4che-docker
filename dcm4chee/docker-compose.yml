@@ -24,8 +24,8 @@ services:
       options:
         max-size: "10m"
     ports:
-      - "8880:8880"
       - "8843:8843"
+      - "8880:8880"
       - "8990:8990"
       - "8993:8993"
     env_file: docker-compose.env
@@ -98,4 +98,5 @@ services:
     volumes:
       - ./localtime:/etc/localtime:ro
       - ./timezone:/etc/timezone:ro
+
       - ./data/rabbitmq:/var/lib/rabbitmq

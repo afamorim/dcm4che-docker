@@ -80,7 +80,7 @@ services:
     volumes:
       - ./localtime:/etc/localtime:ro
       - ./timezone:/etc/timezone:ro
-      - ./data/wildfly:/opt/wildfly/standalone
+      - ./data/arc:/opt/wildfly/standalone
       - ./data/storage:/storage
   rabbitmq:
     restart: unless-stopped

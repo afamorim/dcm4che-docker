@@ -93,8 +93,6 @@ services:
     ports:
       - "5672:5672"
       - "15672:15672"
-    depends_on:
-      - arc
     volumes:
       - ./localtime:/etc/localtime:ro
       - ./timezone:/etc/timezone:ro

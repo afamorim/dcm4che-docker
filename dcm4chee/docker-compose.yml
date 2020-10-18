@@ -98,5 +98,4 @@ services:
     volumes:
       - ./localtime:/etc/localtime:ro
       - ./timezone:/etc/timezone:ro
-
       - ./data/rabbitmq:/var/lib/rabbitmq

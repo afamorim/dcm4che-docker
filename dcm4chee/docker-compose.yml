@@ -82,18 +82,18 @@ services:
       - ./timezone:/etc/timezone:ro
       - ./data/arc:/opt/wildfly/standalone
       - ./data/storage:/storage
-  rabbitmq:
-    restart: unless-stopped
-    image: rabbitmq:3-management
-    container_name: rabbitmq
-    logging:
-      driver: json-file
-      options:
-        max-size: "10m"
-    ports:
-      - "5672:5672"
-      - "15672:15672"
-    volumes:
-      - ./localtime:/etc/localtime:ro
-      - ./timezone:/etc/timezone:ro
-      - ./data/rabbitmq:/var/lib/rabbitmq
+  # rabbitmq:
+  #   restart: unless-stopped
+  #   image: rabbitmq:3-management
+  #   container_name: rabbitmq
+  #   logging:
+  #     driver: json-file
+  #     options:
+  #       max-size: "10m"
+  #   ports:
+  #     - "5672:5672"
+  #     - "15672:15672"
+  #   volumes:
+  #     - ./localtime:/etc/localtime:ro
+  #     - ./timezone:/etc/timezone:ro
+  #     - ./data/rabbitmq:/var/lib/rabbitmq

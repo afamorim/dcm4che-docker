@@ -1,4 +1,4 @@
 #!/bin/bash
 
 bash cert-install.sh
-docker-compose up -d --build
+docker-compose -p dcm4chee up -d --build

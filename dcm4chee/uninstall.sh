@@ -1,5 +1,5 @@
 #!/bin/bash
 
-docker-compose down
+docker-compose -p dcm4chee down
 
 sudo rm -r data

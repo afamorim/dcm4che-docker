@@ -41,6 +41,7 @@ services:
       - ./localtime:/etc/localtime:ro
       - ./timezone:/etc/timezone:ro
       - ./data/keycloak:/opt/keycloak/standalone
+      - ./certs:/opt/keystore
   db:
     restart: unless-stopped
     image: dcm4che/postgres-dcm4chee:12.2-22
@@ -81,4 +82,5 @@ services:
       - ./localtime:/etc/localtime:ro
       - ./timezone:/etc/timezone:ro
       - ./data/arc:/opt/wildfly/standalone
+      - ./certs:/opt/keystore
       - ./data/storage:/storage

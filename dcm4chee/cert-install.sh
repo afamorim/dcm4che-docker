@@ -11,8 +11,10 @@ fi
 
 cert_path=certs
 
-mkdir $cert_path
+mkdir -p $cert_path
 
+sudo rm $cert_path/cacerts.p12
+sudo rm $cert_path/key.p12
 sudo openssl pkcs12 -export -in /etc/letsencrypt/live/$domain/cert.pem -inkey /etc/letsencrypt/live/$domain/privkey.pem -certfile /etc/letsencrypt/live/$domain/chain.pem -out $cert_path/key.p12 -name keystore
 sudo cp $cert_path/cacerts-main.p12 $cert_path/cacerts.p12
 sudo keytool -import -alias e-laudos.com \

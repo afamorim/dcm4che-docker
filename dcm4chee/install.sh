@@ -1,3 +1,4 @@
 #!/bin/bash
 
-exec cert-install.sh
+bash cert-install.sh
+docker-compose up -d --build

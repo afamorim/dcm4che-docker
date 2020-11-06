@@ -80,8 +80,8 @@
       "multipart/related;type=image/jpeg",
       "multipart/related;type=image/jp2",
       "multipart/related;type=image/jpx",
-      "multipart/related;type=image/x-dicom+rle",
-      "multipart/related;type=image/x-jls",
+      "multipart/related;type=image/dicom-rle",
+      "multipart/related;type=image/jls",
       "multipart/related;type=text/xml",
       "multipart/related;type=model/stl",
       "multipart/related;type=model/obj",
@@ -98,8 +98,8 @@
       "multipart/related;type=image/jpeg",
       "multipart/related;type=image/jp2",
       "multipart/related;type=image/jpx",
-      "multipart/related;type=image/x-dicom+rle",
-      "multipart/related;type=image/x-jls"
+      "multipart/related;type=image/dicom-rle",
+      "multipart/related;type=image/jls"
     ]
   },
   "wadoRetrieveBulkdataAccept": {
@@ -1244,7 +1244,7 @@
         "id"
       ],
       "properties": {
-        "name": {
+        "id": {
           "title": "Exporter ID",
           "description": "Exporter ID",
           "type": "string"
@@ -1252,6 +1252,27 @@
         "description": {
           "title": "Exporter Description",
           "description": "Unconstrained text description of the exporter",
+          "type": "string"
+        }
+      }
+    }
+  },
+  "upstpls": {
+    "title": "UPS Templates",
+    "type": "array",
+    "items": {
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "title": "UPS Template ID",
+          "description": "UPS Template ID",
+          "type": "string"
+        },
+        "description": {
+          "title": "UPS Template Description",
+          "description": "Unconstrained text description of the UPS Template",
           "type": "string"
         }
       }
@@ -2706,7 +2727,7 @@
     }
   },
   "webappList": {
-    "title": "HL7 Application List",
+    "title": "Web Application List",
     "type": "array",
     "items": {
       "required": [

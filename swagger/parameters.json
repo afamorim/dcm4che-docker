@@ -400,6 +400,15 @@
       "type": "string"
     }
   },
+  "upsTemplateIDPathParam": {
+    "name": "upsTemplateID",
+    "in": "path",
+    "description": "UPS Template ID",
+    "required": true,
+    "schema": {
+      "type": "string"
+    }
+  },
   "storageIDPathParam": {
     "name": "storageID",
     "in": "path",
@@ -526,6 +535,15 @@
     "description": "Alternative to Accept header field for WADO-RS Retrieve Thumbnail Services",
     "schema": {
       "$ref": "schemas.json#/wadoRetrieveThumbnailAccept"
+    }
+  },
+  "dicomdir": {
+    "name": "dicomdir",
+    "in": "query",
+    "description": "If present with a value of true a DICOMDIR file will be included in the returned ZIP payload.",
+    "schema": {
+      "type": "boolean",
+      "default": false
     }
   },
   "contentType": {
@@ -686,7 +704,7 @@
   "iccprofile": {
     "name": "iccprofile",
     "in": "query",
-    "description": "ICC Profile (not implemented)",
+    "description": "ICC Profile",
     "schema": {
       "type": "string",
       "enum": [
@@ -702,6 +720,14 @@
     "name": "workitem",
     "in": "query",
     "description": "Workitem UID, which corresponds to the Affected SOP Instance UID of the UPS DIMSE N-CREATE operation.",
+    "schema": {
+      "type": "string"
+    }
+  },
+  "newWorkitem": {
+    "name": "workitem",
+    "in": "query",
+    "description": "UID of new created Workitem.",
     "schema": {
       "type": "string"
     }
@@ -1303,6 +1329,30 @@
     "name": "scheduledTime",
     "in": "query",
     "description": "Scheduled Time as <datetime> to be set for scheduling of tasks",
+    "schema": {
+      "type": "string"
+    }
+  },
+  "csvPatientID": {
+    "name": "csvPatientID",
+    "in": "query",
+    "description": "CSV field which contains the Patient ID and Issuer encoded as HL7 CX",
+    "schema": {
+      "type": "integer"
+    }
+  },
+  "upsScheduledTime": {
+    "name": "upsScheduledTime",
+    "in": "query",
+    "description": "Scheduled Procedure Step Start DateTime (0040,4005) as <datetime> in created UPS.",
+    "schema": {
+      "type": "string"
+    }
+  },
+  "upsLabel": {
+    "name": "upsLabel",
+    "in": "query",
+    "description": "Value of Procedure Step Label (0074,1204) in created UPS.",
     "schema": {
       "type": "string"
     }

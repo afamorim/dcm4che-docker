@@ -1,1 +1,4 @@
 dcm4chee/data
+dcm4chee/certs/key.p12
+dcm4chee/certs/cacerts.p12
+.DS_Store

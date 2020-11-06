@@ -5,7 +5,7 @@ cp $JBOSS_HOME/configs/templates/* $JBOSS_HOME/configs/
 sed -i -e "s;%HOST%;$ARCHIVE_HOST;g" "$JBOSS_HOME/configs/dcm4chee-arc-ui.json"
 sed -i -e "s;%HOST%;$ARCHIVE_HOST;g" "$JBOSS_HOME/configs/wildfly-console.json"
 
-log_dir="$JBOSS_HOME/standalone/log"
+log_dir="$JBOSS_HOME/standalone/log-credentials"
 
 mkdir -p $log_dir
 log_credentials="$log_dir/credentials.log"

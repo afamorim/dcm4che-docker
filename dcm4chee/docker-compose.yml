@@ -50,7 +50,7 @@ services:
       options:
         max-size: '10m'
     ports:
-      - '5433:5432'
+      - '5432:5432'
     env_file: docker-compose.env
     volumes:
       - ./localtime:/etc/localtime:ro
@@ -72,7 +72,7 @@ services:
     env_file: docker-compose.env
     environment:
       WILDFLY_CHOWN: /opt/wildfly/standalone /storage
-      WILDFLY_WAIT_FOR: ldap:389 db:5433
+      WILDFLY_WAIT_FOR: ldap:389 db:5432
     depends_on:
       - ldap
       - keycloak
@@ -82,3 +82,14 @@ services:
       - ./timezone:/etc/timezone:ro
       - ./data/wildfly:/opt/wildfly/standalone
       - ./data/storage:/storage
+  connector:
+    restart: unless-stopped
+    image: suportebiograph/e-laudos-connector:0.1.1
+    container_name: connector
+    logging:
+      driver: json-file
+      options:
+        max-size: '10m'
+    ports:
+      - '8088:8080'
+    env_file: docker-compose.env

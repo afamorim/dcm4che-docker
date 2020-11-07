@@ -51,7 +51,7 @@ services:
       options:
         max-size: "10m"
     ports:
-      - "5432:5432"
+      - "5433:5432"
     env_file: docker-compose.env
     volumes:
       - ./localtime:/etc/localtime:ro
@@ -84,3 +84,7 @@ services:
       - ./data/arc:/opt/wildfly/standalone
       - ./certs:/opt/keystore
       - ./data/storage:/storage
+networks:
+  default:
+    driver_opts:
+      com.docker.network.bridge.name: dcm4chee

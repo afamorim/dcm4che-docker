@@ -9,7 +9,33 @@ Este manual ajuda qualquer usuário na criação de ambiente do dcm4che 5.
 - Docker (https://docs.docker.com/engine/install/)
 - Docker Compose (https://docs.docker.com/compose/install/)
 
-## Instalação
+## Certificado SSL
+
+O dcm4chee necessita de um certificado digital SSL para ambiente de produção. Pode-se utilizar um certificado digital proprietário vinculado ao CNPJ da organização, no entanto, este manual apresenta a utilização do certificado Open Source Let'sEncrypt que, embora é gratuito, ele expira a cada 89 dias, sendo necessário a realização de alguns procedimentos.
+
+### Primeira instalação
+
+Existem vários serviços/aplicações que podem ser utilizados para gerar o certificado do Let'sEncrypt. Para este projeto, foi utilizado o certbot (acesse o link https://certbot.eff.org/ para instalar o certbot).
+
+Com o certbot instalado, certifique-se que já existe um Apache Virtual Host configurado para um domínio, senão não será possível gerar o certificado SSL.
+
+Para instalar o certificado digital execute o comando
+
+`sudo certbot --apache`
+
+Depois, acesse a pasta `dcm4chee` execute o script
+
+`bash cert-install.sh <dominio>`
+
+> Quando for solicitado uma senha, você deve informar a palavra `secret`
+
+### Criar renovação automática
+
+Crie um cronjob para usuário root no crontab com a seguinte rotina:
+
+`0 0 * * * /usr/bin/bash <path_to_dcm4chee>/dcm4che-docker/dcm4chee/update-cert.sh%secret%secret #Renew Certificated Let'sEncrypt`
+
+## Instalação do dcm4chee
 
 1. Adicione __keycloak__ no arquivo "hosts"(`C:\Windows\System32\Drivers\etc\hosts`):
 

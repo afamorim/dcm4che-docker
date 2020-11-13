@@ -1,4 +1,4 @@
-version: "3"
+version: '3'
 services:
   ldap:
     restart: unless-stopped
@@ -7,10 +7,10 @@ services:
     logging:
       driver: json-file
       options:
-        max-size: "10m"
+        max-size: '10m'
     ports:
-      - "389:389"
-      - "636:636"
+      - '389:389'
+      - '636:636'
     env_file: docker-compose.env
     volumes:
       - ./data/ldap/data:/var/lib/openldap/openldap-data
@@ -22,12 +22,12 @@ services:
     logging:
       driver: json-file
       options:
-        max-size: "10m"
+        max-size: '10m'
     ports:
-      - "8843:8843"
-      - "8880:8880"
-      - "8990:8990"
-      - "8993:8993"
+      - '8843:8843'
+      - '8880:8880'
+      - '8990:8990'
+      - '8993:8993'
     env_file: docker-compose.env
     environment:
       HTTP_PORT: 8880
@@ -49,9 +49,9 @@ services:
     logging:
       driver: json-file
       options:
-        max-size: "10m"
+        max-size: '10m'
     ports:
-      - "5433:5432"
+      - '5432:5432'
     env_file: docker-compose.env
     volumes:
       - ./localtime:/etc/localtime:ro
@@ -62,14 +62,14 @@ services:
     build: ./arc
     container_name: arc
     ports:
-      - "8080:8080"
-      - "8443:8443"
-      - "9990:9990"
-      - "9993:9993"
-      - "11112:11112"
-      - "2762:2762"
-      - "2575:2575"
-      - "12575:12575"
+      - '8080:8080'
+      - '8443:8443'
+      - '9990:9990'
+      - '9993:9993'
+      - '11112:11112'
+      - '2762:2762'
+      - '2575:2575'
+      - '12575:12575'
     env_file: docker-compose.env
     environment:
       WILDFLY_CHOWN: /opt/wildfly/standalone /storage
@@ -86,14 +86,14 @@ services:
       - ./data/storage:/storage
   connector:
     restart: unless-stopped
-    image: suportebiograph/e-laudos-connector:0.1.6
+    image: suportebiograph/e-laudos-connector:0.2.1
     container_name: connector
     logging:
       driver: json-file
       options:
-        max-size: "10m"
+        max-size: '10m'
     ports:
-      - "8088:8080"
+      - '8088:8080'
     env_file: docker-compose.env
     depends_on:
       - db

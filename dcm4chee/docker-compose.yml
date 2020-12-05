@@ -84,19 +84,19 @@ services:
       - ./data/arc:/opt/wildfly/standalone
       - ./certs:/opt/keystore
       - ./data/storage:/storage
-  connector:
-    restart: unless-stopped
-    image: suportebiograph/e-laudos-connector:0.2.1
-    container_name: connector
-    logging:
-      driver: json-file
-      options:
-        max-size: '10m'
-    ports:
-      - '8088:8082'
-    env_file: docker-compose.env
-    depends_on:
-      - db
+  # connector:
+  #   restart: unless-stopped
+  #   image: suportebiograph/e-laudos-connector:0.4.0
+  #   container_name: connector
+  #   logging:
+  #     driver: json-file
+  #     options:
+  #       max-size: '10m'
+  #   ports:
+  #     - '8088:8082'
+  #   env_file: docker-compose.env
+  #   depends_on:
+  #     - arc
 networks:
   default:
     driver_opts:

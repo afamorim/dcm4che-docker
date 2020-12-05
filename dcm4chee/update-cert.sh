@@ -1,6 +1,6 @@
 #!/bin/bash
 
-domain=$1
+domain=e-laudos.com
 
 pushd /home/elaudoss/dcm4che-docker/dcm4chee/
 

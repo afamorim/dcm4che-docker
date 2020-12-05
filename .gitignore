@@ -1,4 +1,6 @@
 dcm4chee/data
 dcm4chee/certs/key.p12
 dcm4chee/certs/cacerts.p12
+dcm4chee/docker-compose.env
+dcm4chee/arc/configuration/dicom-dcm4chee-arc.properties
 .DS_Store
